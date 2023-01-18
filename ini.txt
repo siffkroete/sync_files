@@ -1,0 +1,39 @@
+// Kommandos:
+//  0 : Menu
+//  1 : Auflisten (dir1 -> fileList1)
+//  2 : Vergleichen (fileList1 mit fileList2)
+//  3 : Alles zusammen (Auflisten: dir1 -> fileList1, dir2 -> fileList2, Vergleichen: fileList1 mit fileList2)
+//  4 : Option 1 und 2 hintereinander
+//  5 : Operation 3 + synchronisieren, d.h. alle fehlenden files gegenseitig rein kopieren, 
+					     	// so dass beide Ordner die gleichen files haben.
+//  6 : Nur synchronisieren, d.h. alle fehlenden files (müssen in result.txt schon gespeicher sein)
+						// gegenseitig rein kopieren
+
+cmd=3
+
+// Soll der relative oder absolute Pfad verglichen werden
+relativePath=enabled
+
+// Gross und Kleinschreibung
+caseSensitive=disabled
+
+// Grössenvergleich 
+fileSize=enabled
+
+// Ordner die miteinander verglichen werden sollen
+dir1=C:\Users\iwanp\Documents\Tutorials
+dir2=I:\documents\Tutorials
+
+
+// Text-Dateien wo die Dateien aufgelistet werden
+fileList1=C:\Homepage\sync_files_v1\fileList1.txt    
+fileList2=C:\Homepage\sync_files_v1\fileList2.txt
+
+// Text-Datei wo das Resultat vom Vergleich reinkommt
+result=C:\Homepage\sync_files_v1\result.txt
+
+// Hier aufschreiben welche Dateien bei sync kopiert wurden
+copied=C\Homepage\sync_files_v1\copied.txt
+
+// Sollte zum beenden Enter gedrückt werden oder soll sich das Programm selber beenden
+endByEnter=disabled
