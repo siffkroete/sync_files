@@ -1,9 +1,10 @@
 #include <iostream>
 #include <iterator>
+/*
 #include <algorithm>
 #include "FileSearchUtil.h"
 #include "WpFileSearch.h"
-
+*/
 
 /*
 // Boost includes
@@ -51,6 +52,7 @@ int main()
 	{
 		cout << endl << "Hi Welt!" << endl;
 		
+		/*
 		unsigned int cmd = atoi(FileSearchUtil::getValueFromIni("cmd").c_str());
 
 		FileSearchUtil::init();
@@ -65,6 +67,7 @@ int main()
 			FileSearchUtil::executeIni(cmd);
 
 		}
+		*/
 	}
 	catch (exception& e)
 	{
