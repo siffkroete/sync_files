@@ -198,11 +198,11 @@ namespace wp
 		}
 
 
-		// (Zum Bildlichen Verständnis können wir den 1 Ordner als "links" bezeichnen und den 2 Ordner als "rechts".)
+		// (Zum Bildlichen Verstï¿½ndnis kï¿½nnen wir den 1 Ordner als "links" bezeichnen und den 2 Ordner als "rechts".)
 		// Diese Funktion kopiert alle fehlenden Dateien von Links nach Rechts und umgekehrt.
 		static int sync_files() 
 		{
-			// Hier stehen die fehlenden Dateien, wobei das Präfix "nicht vorhanden:" bedeutet Rechts nicht vorhanden und das Präfix "neu" bedeutet: Links nicht vorhanden
+			// Hier stehen die fehlenden Dateien, wobei das Prï¿½fix "nicht vorhanden:" bedeutet Rechts nicht vorhanden und das Prï¿½fix "neu" bedeutet: Links nicht vorhanden
 			s_result = getValueFromIni("result");
 
 			Stat stat1, stat2;
@@ -219,8 +219,8 @@ namespace wp
 			string line;
 			getline(ifstream_result, line);
 			
-			ifstream_result.clear(); // Brauchts falls Datei schon am Ende (hier eher unwahrscheinlich es den sie hätte nur 1 Eintrag
-			ifstream_result.seekg(0, ios::beg); // Zurück an den Anfang
+			ifstream_result.clear(); // Brauchts falls Datei schon am Ende (hier eher unwahrscheinlich es den sie hï¿½tte nur 1 Eintrag
+			ifstream_result.seekg(0, ios::beg); // Zurï¿½ck an den Anfang
 
 			
 
@@ -315,7 +315,7 @@ namespace wp
 						return;
 						break;
 					default:
-						throw(exception("\nFalsche Eigabe!\n"));
+						cout << endl << "\nFalsche Eigabe!\n";
 						break;
 					} // End Switch
 				}
@@ -382,7 +382,7 @@ namespace wp
 			break;
 			
 			default:
-				throw(exception("\nFalsche Eigabe!\n"));
+				throw(runtime_error(string("\nFalsche Eigabe!\n")));
 				break;
 			} // End Switch
 		} //  executeIni(const unsigned int cmd)
@@ -432,7 +432,7 @@ namespace wp
 			try
 			{
 				ifstream file("ini.txt", ifstream::in);
-				if (!file) { throw(std::exception("Kein gültiger Pfad zur ini-Datei! Funktion: SysUtil::rgetValueFromIni()")); }
+				if (!file) { throw(std::runtime_error("Kein gï¿½ltiger Pfad zur ini-Datei! Funktion: SysUtil::rgetValueFromIni()")); }
 
 				std::string line, _name, value;
 				int posOfEq;
@@ -467,7 +467,7 @@ namespace wp
 			bfs::path p = bfs::path(path);
 			if (p.empty()) // Wenn Pfad-String leer
 			{
-				throw(exception("Das ist kein Pfad sondern ein leerer String! Funtkion: main::checkFile()"));
+				throw(runtime_error("Das ist kein Pfad sondern ein leerer String! Funtkion: main::checkFile()"));
 			}
 
 			if (bfs::is_directory(path)) // Wenn Ordner
@@ -477,7 +477,7 @@ namespace wp
 			else // Wenn Datei
 			{
 				if (!p.has_extension()) // Wenn keine Endung
-				{// Endung hinzufügen
+				{// Endung hinzufï¿½gen
 					path += ext;
 					p = path;
 				}
@@ -487,7 +487,7 @@ namespace wp
 					if (!MyStringUtil::compareStringsWithSpace(e, ext))
 					{
 						string errorString = "\nFalsche Endung! Die Endung muss " + ext + " sein! Funktion: main::checkFile()\n";
-						throw(exception(errorString.c_str()));
+						throw(runtime_error(errorString.c_str()));
 					}
 				}
 			}
@@ -502,12 +502,12 @@ namespace wp
 			bfs::path p = bfs::path(path);
 			if (p.empty()) // Wenn Pfad-String leer
 			{
-				throw(exception("Das ist kein Pfad sondern ein leerer String! Funtkion: FileSearchUtil::checkFile2()"));
+				throw(runtime_error("Das ist kein Pfad sondern ein leerer String! Funtkion: FileSearchUtil::checkFile2()"));
 			}
 
 			if (bfs::is_directory(path))
 			{
-				throw(exception("Das ist keine Datei sondern ein Ordner! Muss eine Datei sein! Funktion: FileSearchUtil::checkFile2()"));
+				throw(runtime_error("Das ist keine Datei sondern ein Ordner! Muss eine Datei sein! Funktion: FileSearchUtil::checkFile2()"));
 			}
 
 			if (!bfs::exists(path))
@@ -516,7 +516,7 @@ namespace wp
 				if (!bfs::exists(path))
 				{
 					string errorString = "\nDie Datei existiert nicht! Funktion: FileSearchUtil::checkFile2()\n";
-					throw(exception(errorString.c_str()));
+					throw(runtime_error(errorString.c_str()));
 				}
 			}
 
@@ -529,13 +529,13 @@ namespace wp
 			bfs::path p = bfs::path(path);
 			if (p.empty()) // Wenn Pfad-String leer
 			{
-				throw(exception("Das ist kein Pfad sondern ein leerer String! Funtkion: main::checkDir()"));
+				throw(runtime_error("Das ist kein Pfad sondern ein leerer String! Funtkion: main::checkDir()"));
 			}
 			boost::system::error_code bsec;
 			if (!bfs::is_directory(p, bsec)) // Wenn Pfad kein Ordner
 			{
 				string errorString = "\nDer Pfad muss ein Ordner sein! main::checkDir()\n";
-				throw(exception(errorString.c_str()));
+				throw(runtime_error(errorString.c_str()));
 			}
 
 			if (!bfs::exists(path)) // Wenn Der Ordner nicht existiert

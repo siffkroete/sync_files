@@ -185,7 +185,8 @@ namespace wp
 				else  // Wenn Datei
 				{
 					fileSize = bfs::file_size(itr->path());
-					strFileSize = _itoa_s(fileSize, buf, 10);
+					sprintf(buf, "%d", (int)fileSize);
+					// strFileSize = itoa(fileSize, buf, 10);
 					outString = itr->path().string() + s_separator + strFileSize + "\n";
 				}
 
@@ -233,10 +234,10 @@ namespace wp
 				string line1, line2;
 				getline(f1, line1);
 				getline(f2, line2);
-				f1.clear(); // Brauchts falls Datei schon am Ende (hier eher unwahrscheinlich es den sie hätte nur 1 Eintrag
-				f1.seekg(0, ios::beg); // Zurück an den Anfang
-				f2.clear(); // Brauchts falls Datei schon am Ende (hier eher unwahrscheinlich es den sie hätte nur 1 Eintrag
-				f2.seekg(0, ios::beg); // Zurück an den Anfang
+				f1.clear(); // Brauchts falls Datei schon am Ende (hier eher unwahrscheinlich es den sie hï¿½tte nur 1 Eintrag
+				f1.seekg(0, ios::beg); // Zurï¿½ck an den Anfang
+				f2.clear(); // Brauchts falls Datei schon am Ende (hier eher unwahrscheinlich es den sie hï¿½tte nur 1 Eintrag
+				f2.seekg(0, ios::beg); // Zurï¿½ck an den Anfang
 
 				unordered_set<string> usFile2;
 
@@ -302,10 +303,10 @@ namespace wp
 				string line1, line2, path1, path2;
 				getline(f1, line1);
 				getline(f2, line2);
-				f1.clear(); // Brauchts falls Datei schon am Ende (hier eher unwahrscheinlich es den sie hätte nur 1 Eintrag
-				f1.seekg(0, ios::beg); // Zurück an den Anfang
-				f2.clear(); // Brauchts falls Datei schon am Ende (hier eher unwahrscheinlich es den sie hätte nur 1 Eintrag
-				f2.seekg(0, ios::beg); // Zurück an den Anfang
+				f1.clear(); // Brauchts falls Datei schon am Ende (hier eher unwahrscheinlich es den sie hï¿½tte nur 1 Eintrag
+				f1.seekg(0, ios::beg); // Zurï¿½ck an den Anfang
+				f2.clear(); // Brauchts falls Datei schon am Ende (hier eher unwahrscheinlich es den sie hï¿½tte nur 1 Eintrag
+				f2.seekg(0, ios::beg); // Zurï¿½ck an den Anfang
 
 				unsigned int fileSize1, fileSize2;
 
@@ -345,9 +346,9 @@ namespace wp
 						++stat.m_notExist;
 					}
 					else if (m_compareFileSize)// Wenn Pfad in file2 existiert 
-					{// dann Grösse vergleichen
+					{// dann Grï¿½sse vergleichen
 						fileSize2 = itrFile2->second;
-						if (fileSize1 != fileSize2) // Wenn Grösse nicht übereinstimmt
+						if (fileSize1 != fileSize2) // Wenn Grï¿½sse nicht ï¿½bereinstimmt
 						{
 							r << m_outStrings.m_diffSizeOutStr << ": " << line1 << " bytes | in 2: " << fileSize2 << " bytes" << endl;
 							++stat.m_diffSize;
@@ -362,7 +363,7 @@ namespace wp
 						fCompared = (float)stat.m_compared / 1000.0f;
 						cout << "\r" << fCompared << " Tausend Dateien verglichen | ";
 						cout << stat.m_notExist << " Datein existieren nicht in der " << textFile2;
-						cout << endl << stat.m_diffSize << " Datein haben verschiedene Grössen" << endl;
+						cout << endl << stat.m_diffSize << " Datein haben verschiedene Grï¿½ssen" << endl;
 					}
 				}
 			}

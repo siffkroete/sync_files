@@ -1,18 +1,22 @@
 #include <iostream>
 #include <iterator>
-/*
+
 #include <algorithm>
 #include "FileSearchUtil.h"
 #include "WpFileSearch.h"
-*/
 
-/*
+
+
 // Boost includes
 #include <boost/lambda/lambda.hpp>
 #include <boost/filesystem.hpp>
+#include <boost/iostreams/positioning.hpp>
+#include <boost/iostreams/operations.hpp>
+#include <boost/iostreams/seek.hpp>
+#include <boost/algorithm/string.hpp>
 
 using namespace wp;
-*/
+
 
 /*
 * Boost habe ich folgendermassen zum Laufen gebracht:
@@ -51,9 +55,13 @@ int main()
 	try
 	{
 		cout << endl << "Hi Welt!" << endl;
+		cin.get();
 		
-		/*
-		unsigned int cmd = atoi(FileSearchUtil::getValueFromIni("cmd").c_str());
+		string str_cmd = FileSearchUtil::getValueFromIni("cmd");
+		unsigned int cmd;
+		char buf[4];
+		memcpy(buf, str_cmd.c_str(), 4);
+		sprintf(buf, "%d", cmd);
 
 		FileSearchUtil::init();
 
@@ -67,7 +75,7 @@ int main()
 			FileSearchUtil::executeIni(cmd);
 
 		}
-		*/
+		
 	}
 	catch (exception& e)
 	{

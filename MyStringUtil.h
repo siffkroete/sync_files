@@ -31,7 +31,7 @@ namespace mystring
 		}
 
 		// Schneidet alle leerzeichen am Ende des Strings weg und gibt die Anzahl
-		// abgeschnittener leerzeichen zurück
+		// abgeschnittener leerzeichen zurï¿½ck
 		static unsigned int trimWhiteSpaceRight(string& s)
 		{
 			for (size_t i = s.size() - 1; i >= 0; --i)
@@ -96,7 +96,7 @@ namespace mystring
 		{
 			string _s = "";
 
-			if (sizeof(s) > 255) { throw(exception("Der String ist zu lang! Funktion: MyStringUtil::mirroringString")); }
+			if (sizeof(s) > 255) { throw(runtime_error("Der String ist zu lang! Funktion: MyStringUtil::mirroringString")); }
 
 			string::reverse_iterator iter;
 
@@ -136,7 +136,7 @@ namespace mystring
 			}
 
 			res[n] = '\0';
-			printf(res);
+			cout << string(res);
 			printf("\n");
 		}
 

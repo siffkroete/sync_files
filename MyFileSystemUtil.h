@@ -59,7 +59,7 @@ namespace myfilesystem
 						r = bfs::create_directories(parent);
 						std::ofstream outfile(path);
 						if (!outfile)
-							throw(std::exception("Die Datei konnte nicht erstellt werden! Funktion: MyFileSystemUtil::clearFile()"));
+							throw(std::runtime_error("Die Datei konnte nicht erstellt werden! Funktion: MyFileSystemUtil::clearFile()"));
 						outfile.close();
 					}
 					else if(bfs::is_directory(path)) // Wenn Ordner
@@ -68,14 +68,14 @@ namespace myfilesystem
 					}
 					else
 					{
-						throw(std::exception("Der Pfad hat weder eine Dateinamen noch ist es ein Ordner! \
+						throw(std::runtime_error("Der Pfad hat weder eine Dateinamen noch ist es ein Ordner! \
 						Funktion: MyFileSystem::create()"));
 					}
 				}
 			}
-			catch (std::exception& e)
+			catch (std::runtime_error& e)
 			{
-				printf("\Fehler in MyFileSystemUtil::create()");
+				printf("\nFehler in MyFileSystemUtil::create()");
 				throw e;
 			}
 			return r;
@@ -88,7 +88,7 @@ namespace myfilesystem
 			if (!p.empty() && !bfs::exists(p))
 			{
 				if(!bfs::create_directories(p))
-					throw(std::exception("Der Ordner konnte nicht erstellt werden! \
+					throw(std::runtime_error("Der Ordner konnte nicht erstellt werden! \
 					 Funktion: MyFileSystemUtil::create_directory_from_file()"));
 				return true;
 			}
@@ -105,7 +105,7 @@ namespace myfilesystem
 					removeFile(path);
 					std::ofstream outfile(path);
 					if (!outfile)
-						throw(std::exception("Die Datei konnte nicht ordentlich gel\x94scht werden! Funktion: SysUtil::clearFile()"));
+						throw(std::runtime_error("Die Datei konnte nicht ordentlich gel\x94scht werden! Funktion: SysUtil::clearFile()"));
 					outfile.close();
 					return true;
 				}
@@ -169,7 +169,7 @@ namespace myfilesystem
 			return 0;
 		}
 
-		// Gibt alle Ordner zurück aus sourceDir
+		// Gibt alle Ordner zurï¿½ck aus sourceDir
 		static int getAllFileNames(const string& sourceDir, std::vector<string>& fileNames)
 		{
 			// namespace bfs = boost::filesystem;
@@ -189,7 +189,7 @@ namespace myfilesystem
 			return 0;
 		}
 
-		// Gibt alle Ordner zurück aus sourceDir
+		// Gibt alle Ordner zurï¿½ck aus sourceDir
 		static int getAllDirNames(const string& sourceDir, std::vector<string>& fileNames)
 		{
 			// namespace bfs = boost::filesystem;
@@ -217,7 +217,7 @@ namespace myfilesystem
 			
 			if (!isEmpty(path)) // Wenn Pfad nicth leer
 			{ 
-				return(bfs::path(path).filename().string()); // Den Namen der Datei zurückgeben
+				return(bfs::path(path).filename().string()); // Den Namen der Datei zurï¿½ckgeben
 			}
 			else // Wenn Pfad leer
 			{
@@ -248,8 +248,9 @@ namespace myfilesystem
 
 		static bool copy_file(const string source_path, const string dest_path)
 		{
-			const auto copyOptions = bfs::copy_options::update_existing | bfs::copy_options::recursive;  // | fs::copy_options::directories_only
-			return bfs::copy_file(source_path, dest_path, copyOptions); // Von Rechts nach Links kopieren
+			// const auto copyOptions = bfs::copy_options::update_existing | bfs::copy_options::recursive;  // | fs::copy_options::directories_only
+			bfs::copy_file(source_path, dest_path); // Von Rechts nach Links kopieren
+			return true;
 		}
 
 		static void copy_directory(const bfs::path& sourceDir, const bfs::path& destinationDir)

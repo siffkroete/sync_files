@@ -62,4 +62,4 @@ namespace my_log
 	};
 }
 
-#endif _LOG_
+#endif

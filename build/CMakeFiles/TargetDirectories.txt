@@ -1,0 +1,3 @@
+/mnt/c/users/Public/Documents/linux_dev/sync_file_v2/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/users/Public/Documents/linux_dev/sync_file_v2/build/CMakeFiles/edit_cache.dir
+/mnt/c/users/Public/Documents/linux_dev/sync_file_v2/build/CMakeFiles/sync_files_binary.dir
